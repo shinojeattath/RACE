@@ -1,0 +1,38 @@
+/* LandingPage.css */
+
+.page-container {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-content {
+    text-align: center;
+    max-width: 800px;
+  }
+  
+  .title {
+    font-size: 3.4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 6px;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  
