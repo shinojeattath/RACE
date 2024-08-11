@@ -12,7 +12,6 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Arial', sans-serif;
 `;
 
 const Header = styled(motion.header)`
@@ -53,8 +52,9 @@ const MainContent = styled(motion.main)`
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 3rem;
+  font-size: 3.4rem;
   margin-bottom: 1rem;
+  letter-spacing: 6px;
 `;
 
 const Subtitle = styled(motion.p)`
