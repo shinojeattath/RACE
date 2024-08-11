@@ -1,0 +1,86 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    z-index: 1000;
+  }
+  
+  .navbar-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+    margin-top: 1.5rem;
+    margin-right: 2rem;
+  }
+  
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    letter-spacing: 2px;
+    -webkit-box-reflect: below 0px linear-gradient(transparent #0000);
+    animation: animate 5s linear infinite;
+  }
+  
+  .navbar-links a:hover {
+    animation: none;
+    color: #fff;
+    text-shadow: 0 0 10px #03bcf4,
+                 0 0 20px #03bcf4,
+                 0 0 40px #03bcf4,
+                 0 0 80px #03bcf4,
+                 0 0 100px #03bcf4;
+  }
+  
+  .navbar-links a:not(.contact-link):hover {
+    text-decoration: none;
+  }
+  
+  .contact-link {
+    position: relative;
+  }
+  
+  .contact-link:hover {
+    transform: translateY(-5px);
+  }
+  
+  .contact-link::after {
+    content: "Out Of Control";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem; /* Reduced font size */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  
+  .contact-link:hover::after {
+    opacity: 1;
+  }
+  
+  @keyframes animate {
+    0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
+      color: #ffffff4c;
+      text-shadow: none;
+    }
+    18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 75%, 90%, 92.1%, 100% {
+      color: #fff;
+      text-shadow: 0 0 10px #ffffff,
+                   0 0 20px #ffffff,
+                   0 0 40px #ffffff,
+                   0 0 80px #ffffff,
+                   0 0 100px #ffffff;
+    }
+  }
