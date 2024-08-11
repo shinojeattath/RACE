@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Loading from './Components/Loading';
 import ParticlesComponent from './Components/Particles';
 import Navbar from './Components/NavBar';
+import CustomCursor from './Components/Cursor'; // Import the CustomCursor component
 
 // Lazy load components
 const LandingPage = lazy(() => import('./Components/LandingPage'));
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <Router>
       <div>
+        <CustomCursor /> {/* Add the CustomCursor here */}
         <ParticlesComponent />
         <Navbar />
         <Suspense fallback={<Loading />}>
