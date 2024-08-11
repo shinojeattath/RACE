@@ -7,6 +7,7 @@ import ParticlesComponent from './Components/Particles';
 import Navbar from './Components/NavBar';
 
 
+
 const App = () => {
   return (
     <Router>
