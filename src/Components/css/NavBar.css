@@ -30,6 +30,7 @@
   .navbar-links a:hover {
     animation: none;
     color: #fff;
+    cursor: none;
     text-shadow: 0 0 10px #ffffff,
                  0 0 20px #ffffff,
                  0 0 40px #ffffff,
