@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './css/MemberCarousel.css';
+import '../assets/fonts/stylesheet.css'
 
 const MemberCarousel = ({ members }) => {
   const carouselRef = useRef(null);
