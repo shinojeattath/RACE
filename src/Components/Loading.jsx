@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css'; // Import the CSS file for styling
+import './css/Loading.css'; // Import the CSS file for styling
 
 const LoadingScreen = ({ onSkip }) => {
   return (
