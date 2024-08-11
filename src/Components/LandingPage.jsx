@@ -48,7 +48,7 @@ const NavItem = styled(motion.a)`
 const MainContent = styled(motion.main)`
   text-align: center;
   max-width: 800px;
-  padding: 2rem;
+  
 `;
 
 const Title = styled(motion.h2)`
@@ -102,17 +102,7 @@ const bounce = {
 const LandingPage = () => {
   return (
     <PageContainer>
-      <Header initial="hidden" animate="visible" variants={fadeIn}>
-        <Logo variants={bounce} initial="initial" animate="animate">
-          RACE
-        </Logo>
-        <Nav>
-          <NavItem href="#" variants={slideIn}>Home</NavItem>
-          <NavItem href="#" variants={slideIn}>About</NavItem>
-          <NavItem href="#" variants={slideIn}>Events</NavItem>
-          <NavItem href="#" variants={slideIn}>Contact</NavItem>
-        </Nav>
-      </Header>
+      
 
       <MainContent initial="hidden" animate="visible" variants={fadeIn}>
         <Title variants={slideIn}>
@@ -132,9 +122,9 @@ const LandingPage = () => {
         </CTAButton>
       </MainContent>
 
-      <Footer initial="hidden" animate="visible" variants={fadeIn}>
+      {/* <Footer initial="hidden" animate="visible" variants={fadeIn}>
         © 2024 Regal Association of Computer Engineers. All rights reserved.
-      </Footer>
+      </Footer> */}
     </PageContainer>
   );
 };
