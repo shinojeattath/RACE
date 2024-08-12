@@ -3,28 +3,42 @@ import { motion } from 'framer-motion';
 import '../assets/fonts/stylesheet.css';
 import './css/LandingPage.css';
 import LiquidSection from './LiquidSection';
+import Navbar from './Navbar';
 
 const LandingPage = () => {
   const [showLiquid, setShowLiquid] = useState(false);
+  const [hideNavbar, setHideNavbar] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = 50; // Adjust this value to change when the effect triggers
+      const triggerPosition = 50; // Adjust this value as needed
 
       if (scrollPosition > triggerPosition) {
         setShowLiquid(true);
       } else {
         setShowLiquid(false);
       }
+
+      if (scrollPosition > lastScrollY) {
+        // Scrolling down
+        setHideNavbar(true);
+      } else {
+        // Scrolling up
+        setHideNavbar(false);
+      }
+
+      setLastScrollY(scrollPosition);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <div className="page-container">
+      <Navbar hidden={hideNavbar} />
       <motion.main
         className="main-content"
         initial="hidden"
