@@ -1,5 +1,6 @@
-/* LandingPage.css */
-
+body{
+  background-color: black;
+}
 .page-container {
     background-color: #000;
     color: #fff;
@@ -34,5 +35,20 @@
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 50px;
+  }
+  
+  
+  .page-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .main-content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   

@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import '../assets/fonts/stylesheet.css';
-import './css/LandingPage.css'; // Import the CSS file
+import './css/LandingPage.css';
+import LiquidSection from './LiquidSection';
 
 const LandingPage = () => {
+  const [showLiquid, setShowLiquid] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const triggerPosition = 50; // Adjust this value to change when the effect triggers
+
+      if (scrollPosition > triggerPosition) {
+        setShowLiquid(true);
+      } else {
+        setShowLiquid(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="page-container">
       <motion.main
@@ -28,6 +47,7 @@ const LandingPage = () => {
           Empowering the future of technology
         </motion.p>
       </motion.main>
+      <LiquidSection isVisible={showLiquid} />
     </div>
   );
 };
