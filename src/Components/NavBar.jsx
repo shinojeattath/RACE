@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './css/Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ hidden }) => {
   const [isCtrlPressed, setIsCtrlPressed] = useState(false);
 
   useEffect(() => {
@@ -34,7 +35,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <motion.nav
+      className="navbar"
+      initial={{ top: 0 }}
+      animate={{ top: hidden ? -100 : 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="navbar-links">
         <Link to="/">HOME</Link>
         <Link to="/about">ABOUT</Link>
@@ -43,7 +49,7 @@ const Navbar = () => {
           CONTACT
         </Link>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

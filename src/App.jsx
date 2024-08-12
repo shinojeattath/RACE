@@ -2,8 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Loading from './Components/Loading';
 import ParticlesComponent from './Components/Particles';
-import Navbar from './Components/NavBar';
-import CustomCursor from './Components/Cursor'; // Import the CustomCursor component
+import CustomCursor from './Components/Cursor';
 
 // Lazy load components
 const LandingPage = lazy(() => import('./Components/LandingPage'));
@@ -14,9 +13,8 @@ const App = () => {
   return (
     <Router>
       <div>
-        <CustomCursor /> {/* Add the CustomCursor here */}
+        <CustomCursor />
         <ParticlesComponent />
-        <Navbar />
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<LandingPage />} />

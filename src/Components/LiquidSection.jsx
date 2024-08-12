@@ -1,4 +1,3 @@
-// LiquidSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import './css/LiquidSection.css';
@@ -12,7 +11,6 @@ const LiquidSection = ({ isVisible }) => {
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
       <div className="liquid-content">
-        {/* Add your content for the liquid section here */}
         <h2>Welcome to the Liquid Section</h2>
         <p>This is where you can add more information about RACE.</p>
       </div>
