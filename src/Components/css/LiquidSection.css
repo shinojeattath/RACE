@@ -40,3 +40,13 @@
     text-align: center;
   }
   
+  .transition-circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 15;
+  }
