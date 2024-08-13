@@ -3,9 +3,14 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to top, #ffffff, #ffffff);
+    background-color: #ffffff; /* Set the background color to white */
     overflow: hidden;
     z-index: 10;
+    /* Add the grid pattern with black lines */
+    background-image: 
+      linear-gradient(to right, #00000059 1px, transparent 1px),
+      linear-gradient(to bottom, #00000059 1px, transparent 1px);
+    background-size: 40px 40px; /* Adjust the size of the grid cells */
   }
   
   .liquid-section::before {
@@ -33,4 +38,15 @@
     padding: 2rem;
     color: rgb(0, 0, 0);
     text-align: center;
+  }
+  
+  .transition-circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 15;
   }
