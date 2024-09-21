@@ -10,27 +10,24 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
   useEffect(() => {
     if (isVisible && transitionStage === 'liquid') {
       sectionAnimation.start({ height: '100vh' });
-      const timer = setTimeout(() => setShowCircle(true), 1000);
-      return () => clearTimeout(timer);
     } else if (transitionStage === 'reverting') {
       revertAnimation();
     }
   }, [isVisible, transitionStage]);
 
   useEffect(() => {
-    const handleScrollInSection = () => {
-      if (!showCircle && window.scrollY >= window.innerHeight + 100) {
+    const handleKeyPress = (event) => {
+      if (event.code === 'Space' && isVisible && transitionStage === 'liquid' && !showCircle) {
+        event.preventDefault();
         setShowCircle(true);
       }
     };
 
     if (isVisible && transitionStage === 'liquid') {
-      window.addEventListener('scroll', handleScrollInSection);
-    } else {
-      window.removeEventListener('scroll', handleScrollInSection);
+      window.addEventListener('keydown', handleKeyPress);
     }
 
-    return () => window.removeEventListener('scroll', handleScrollInSection);
+    return () => window.removeEventListener('keydown', handleKeyPress);
   }, [isVisible, transitionStage, showCircle]);
 
   useEffect(() => {
@@ -40,17 +37,29 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
   }, [showCircle, transitionStage]);
 
   const animateCircle = async () => {
-    console.log('Animating circle...');
-    await circleAnimation.start({ y: '60vh', scale: 1, transition: { duration: 0.5 } });
-    await circleAnimation.start({ scale: 100, transition: { duration: 1, ease: 'easeInOut' } });
-    console.log('Circle animation complete');
-    onTransitionComplete();  // Ensure this callback is triggered after animation
+    await circleAnimation.start({ 
+      y: 0, 
+      scale: 1, 
+      opacity: 1,
+      transition: { duration: 0.5 } 
+    });
+    await circleAnimation.start({ 
+      scale: 100, 
+      transition: { duration: 1, ease: 'easeInOut' } 
+    });
+    onTransitionComplete();
   };
 
   const revertAnimation = async () => {
-    console.log('Reverting animation...');
-    await circleAnimation.start({ scale: 1, transition: { duration: 1, ease: 'easeInOut' } });
-    await circleAnimation.start({ y: '100vh', transition: { duration: 1, ease: 'easeInOut' } });
+    await circleAnimation.start({ 
+      scale: 1, 
+      transition: { duration: 1, ease: 'easeInOut' } 
+    });
+    await circleAnimation.start({ 
+      y: '100vh', 
+      opacity: 0,
+      transition: { duration: 1, ease: 'easeInOut' } 
+    });
     setShowCircle(false);
     await sectionAnimation.start({ height: 0, transition: { duration: 1, ease: 'easeInOut' } });
     onRevertComplete();
@@ -63,16 +72,21 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
       animate={sectionAnimation}
     >
       <div className="liquid-content">
-        <h2>Welcome to the Liquid Section</h2>
-        <p>This is where you can add more information about RACE.</p>
+        <div className="left-section">
+          <h2>Welcome to the Left Section</h2>
+          <p>This is where you can add information about one aspect of RACE.</p>
+        </div>
+        <div className="right-section">
+          <h2>Welcome to the Right Section</h2>
+          <p>This is where you can add information about another aspect of RACE.</p>
+        </div>
+        {!showCircle && <p className="space-prompt">Press the Space key to continue</p>}
       </div>
-      {showCircle && (
-        <motion.div
-          className="transition-circle"
-          initial={{ scale: 0, y: '100vh' }}
-          animate={circleAnimation}
-        />
-      )}
+      <motion.div
+        className="transition-circle"
+        initial={{ scale: 0, y: '100vh', opacity: 0 }}
+        animate={circleAnimation}
+      />
     </motion.div>
   );
 };

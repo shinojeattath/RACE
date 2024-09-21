@@ -1,52 +1,77 @@
 .liquid-section {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff; /* Set the background color to white */
-    overflow: hidden;
-    z-index: 10;
-    /* Add the grid pattern with black lines */
-    background-image: 
-      linear-gradient(to right, #00000059 1px, transparent 1px),
-      linear-gradient(to bottom, #00000059 1px, transparent 1px);
-    background-size: 40px 40px; /* Adjust the size of the grid cells */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  overflow: hidden;
+  z-index: 10;
+  background-image: 
+    linear-gradient(to right, #00000059 1px, transparent 1px),
+    linear-gradient(to bottom, #00000059 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.liquid-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300a8ff" fill-opacity="1" d="M0,32L48,53.3C96,75,192,117,288,138.7C384,160,480,160,576,138.7C672,117,768,75,864,69.3C960,64,1056,96,1152,106.7C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: cover;
+  animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0;
   }
-  
-  .liquid-section::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300a8ff" fill-opacity="1" d="M0,32L48,53.3C96,75,192,117,288,138.7C384,160,480,160,576,138.7C672,117,768,75,864,69.3C960,64,1056,96,1152,106.7C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-    background-size: cover;
-    animation: wave 10s linear infinite;
+  100% {
+    background-position-x: 1440px;
   }
-  
-  @keyframes wave {
-    0% {
-      background-position-x: 0;
-    }
-    100% {
-      background-position-x: 1440px;
-    }
-  }
-  
+}
+
+.liquid-content {
+  height: calc(100vh - 50px);
+  display: flex;
+  color: rgb(0, 0, 0);
+}
+
+.left-section, .right-section {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.space-prompt {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.transition-circle {
+  position: fixed;
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-50%) translateY(50%);
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 15;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .liquid-content {
-    padding: 2rem;
-    color: rgb(0, 0, 0);
-    text-align: center;
+    flex-direction: column;
   }
-  
-  .transition-circle {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    border-radius: 50%;
-    z-index: 15;
-  }
+}
