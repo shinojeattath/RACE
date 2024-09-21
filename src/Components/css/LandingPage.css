@@ -1,5 +1,7 @@
 body{
   background-color: black;
+  height: 101vh;
+  scrollbar-color: black;
 }
 .page-container {
     background-color: #000;

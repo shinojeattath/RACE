@@ -16,7 +16,7 @@ const LandingPage = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = 50; // Adjust this value as needed
+      const triggerPosition = 1; // Adjust this value as needed
 
       if (scrollPosition > triggerPosition && transitionStage === 'initial') {
         setShowLiquid(true);

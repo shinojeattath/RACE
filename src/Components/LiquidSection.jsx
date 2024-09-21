@@ -41,7 +41,7 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
       y: 0, 
       scale: 1, 
       opacity: 1,
-      transition: { duration: 0.5 } 
+      transition: { duration: 1 } 
     });
     await circleAnimation.start({ 
       scale: 100, 
