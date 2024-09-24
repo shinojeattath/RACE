@@ -6,11 +6,24 @@
   background-color: #000000;
   overflow: hidden;
   z-index: 10;
-  background-image: 
-    linear-gradient(to right, #ffffff2f 1px, transparent 1px),
-    linear-gradient(to bottom, #ffffff2b 1px, transparent 1px);
-  background-size: 300px 80px;
+  
+  /* Adding the grid background */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px; /* Adjust grid size as needed */
 }
+
+/* Radial gradient for the container to give a faded look */
+.liquid-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 20%, black);
+  z-index: 5;
+}
+
 
 .liquid-section::before {
   content: '';
@@ -47,6 +60,8 @@
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  z-index: 1000;
+
 }
 
 .space-prompt {
