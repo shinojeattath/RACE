@@ -6,6 +6,7 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
   const [showCircle, setShowCircle] = useState(false);
   const circleAnimation = useAnimation();
   const sectionAnimation = useAnimation();
+  const [scrollSpeed, setScrollSpeed] = useState(1);
 
   useEffect(() => {
     if (isVisible && transitionStage === 'liquid') {
@@ -35,6 +36,30 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
       animateCircle();
     }
   }, [showCircle, transitionStage]);
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const maxHeight = window.innerHeight;
+    const progress = Math.min(scrollY / maxHeight, 1); // Calculate how far down the page we are
+
+    // Slower animation based on scroll
+    setScrollSpeed(1 + progress * 4); // Increase speed as you scroll, adjust this multiplier as needed
+
+    sectionAnimation.start({
+      height: `${100 * (1 - progress)}vh`, // Reduce height slowly based on scroll
+      transition: { duration: scrollSpeed, ease: 'easeInOut' },
+    });
+  };
+
+  useEffect(() => {
+    if (isVisible && transitionStage === 'liquid') {
+      window.addEventListener('scroll', handleScroll);
+    } else {
+      window.removeEventListener('scroll', handleScroll);
+    }
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isVisible, transitionStage, scrollSpeed]);
 
   const animateCircle = async () => {
     await circleAnimation.start({ 
