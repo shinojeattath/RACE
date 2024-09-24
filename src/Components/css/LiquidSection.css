@@ -6,7 +6,7 @@
   background-color: #000000;
   overflow: hidden;
   z-index: 10;
-  
+
   /* Adding the grid background */
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
@@ -23,7 +23,6 @@
   background: radial-gradient(ellipse at center, transparent 20%, black);
   z-index: 5;
 }
-
 
 .liquid-section::before {
   content: '';
@@ -50,18 +49,14 @@
   height: calc(100vh - 50px);
   display: flex;
   color: rgb(255, 255, 255);
+  flex-direction: column; /* Ensure content stacks vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
 }
 
-.left-section, .right-section {
-  flex: 1;
+.combined-section {
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
-  z-index: 1000;
-
+  text-align: center; /* Center text in the combined section */
 }
 
 .space-prompt {
@@ -87,6 +82,6 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .liquid-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack content vertically on smaller screens */
   }
 }
