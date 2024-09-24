@@ -62,28 +62,28 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
   }, [isVisible, transitionStage, scrollSpeed]);
 
   const animateCircle = async () => {
-    await circleAnimation.start({ 
-      y: 0, 
-      scale: 1, 
+    await circleAnimation.start({
+      y: 0,
+      scale: 1,
       opacity: 1,
-      transition: { duration: 1 } 
+      transition: { duration: 1 }
     });
-    await circleAnimation.start({ 
-      scale: 100, 
-      transition: { duration: 1, ease: 'easeInOut' } 
+    await circleAnimation.start({
+      scale: 100,
+      transition: { duration: 1, ease: 'easeInOut' }
     });
     onTransitionComplete();
   };
 
   const revertAnimation = async () => {
-    await circleAnimation.start({ 
-      scale: 1, 
-      transition: { duration: 1, ease: 'easeInOut' } 
+    await circleAnimation.start({
+      scale: 1,
+      transition: { duration: 1, ease: 'easeInOut' }
     });
-    await circleAnimation.start({ 
-      y: '100vh', 
+    await circleAnimation.start({
+      y: '100vh',
       opacity: 0,
-      transition: { duration: 1, ease: 'easeInOut' } 
+      transition: { duration: 1, ease: 'easeInOut' }
     });
     setShowCircle(false);
     await sectionAnimation.start({ height: 0, transition: { duration: 1, ease: 'easeInOut' } });
@@ -97,13 +97,10 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
       animate={sectionAnimation}
     >
       <div className="liquid-content">
-        <div className="left-section">
-          <h2>Welcome to the Left Section</h2>
+        <div className="combined-section">
+          <h2>About The Department</h2>
           <p>This is where you can add information about one aspect of RACE.</p>
-        </div>
-        <div className="right-section">
-          <h2>Welcome to the Right Section</h2>
-          <p>This is where you can add information about another aspect of RACE.</p>
+          <p>Welcome to the combined section. You can also add more information here about RACE.</p>
         </div>
         {!showCircle && <p className="space-prompt">Press the Space key to continue</p>}
       </div>
