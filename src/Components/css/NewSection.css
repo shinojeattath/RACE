@@ -17,8 +17,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px; /* Adjust this to position cards vertically */
-  margin-bottom: auto; /* Ensure there's space below the cards */
+  margin-top: 20px; 
+  margin-bottom: auto; 
 }
 
 .card {
@@ -44,14 +44,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.735), rgba(0, 0, 0, 0.387)); /* Dark gradient from bottom to top */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)); /* Dark gradient from bottom to top */
   z-index: 1; /* Place behind text */
   transition: background 0.6s ease;
 }
 
 /* Darker overlay on hover */
 .card:hover::before {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.735), rgba(0, 0, 0, 0.735)); 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.534), rgba(0, 0, 0, 0.534)); 
 }
 
 .card h3,
