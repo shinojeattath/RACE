@@ -8,19 +8,49 @@ const NewSection = ({ isVisible }) => {
 
   const cardData = [
     {
-      title: "Card 1",
+      title: "Drone class",
       description: "This is the description for card 1.",
-      image: "url('../../public/Race logo-2x.png')",
+      image: "url('../../public/drone technology.png')",
     },
     {
       title: "Card 2",
       description: "This is the description for card 2.",
-      image: "url('/path/to/image2.jpg')",
+      image: "url('../../public/NIFTY.png')",
     },
     {
       title: "Card 3",
       description: "This is the description for card 3.",
-      image: "url('/path/to/image3.jpg')",
+      image: "url('../../public/talk on ent.png')",
+    },
+    {
+      title: "Drone class",
+      description: "This is the description for card 1.",
+      image: "url('../../public/drone technology.png')",
+    },
+    {
+      title: "Card 2",
+      description: "This is the description for card 2.",
+      image: "url('../../public/NIFTY.png')",
+    },
+    {
+      title: "Card 3",
+      description: "This is the description for card 3.",
+      image: "url('../../public/talk on ent.png')",
+    },
+    {
+      title: "Drone class",
+      description: "This is the description for card 1.",
+      image: "url('../../public/drone technology.png')",
+    },
+    {
+      title: "Card 2",
+      description: "This is the description for card 2.",
+      image: "url('../../public/NIFTY.png')",
+    },
+    {
+      title: "Card 3",
+      description: "This is the description for card 3.",
+      image: "url('../../public/talk on ent.png')",
     },
   ];
 
@@ -31,9 +61,10 @@ const NewSection = ({ isVisible }) => {
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
-      <h2>Welcome to the New Section</h2>
-      <p>This is the content of your new section.</p>
-
+      <h2>News And Events</h2>
+      
+      <div>
+      <h3 className="card-section-heading">Our Recent Updates</h3>
       <div className="card-section">
         {cardData.map((card, index) => (
           <motion.div
@@ -60,6 +91,7 @@ const NewSection = ({ isVisible }) => {
             </motion.div>
           </motion.div>
         ))}
+      </div>
       </div>
 
       <style jsx>{`
@@ -93,6 +125,7 @@ const NewSection = ({ isVisible }) => {
 
         .card.blur {
           filter: blur(4px);
+          transition: filter 0.3s ease;
         }
 
         .card-content {
@@ -109,6 +142,12 @@ const NewSection = ({ isVisible }) => {
         .card-content h3 {
           margin: 0 0 10px 0;
           font-size: 1.5rem;
+        }
+
+        .card-section-heading {
+          margin-bottom: 20px; /* Space below the heading */
+          font-size: 1.8rem; /* Adjust as needed */
+          text-align: center; /* Center the heading text */
         }
 
         .card-content p {
