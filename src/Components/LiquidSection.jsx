@@ -114,3 +114,4 @@ const LiquidSection = ({ isVisible, onTransitionComplete, transitionStage, onRev
 };
 
 export default LiquidSection;
+
