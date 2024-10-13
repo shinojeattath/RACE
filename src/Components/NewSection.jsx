@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import './css/NewSection.css';
 
 const NewSection = ({ isVisible }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [showAllCards, setShowAllCards] = useState(false);
 
   const cardData = [
     {
@@ -27,6 +28,32 @@ const NewSection = ({ isVisible }) => {
       description: "This is the description for card 1.",
       image: "url('../../public/drone technology.png')",
     },
+    {
+      title: "Card 2",
+      description: "This is the description for card 2.",
+      image: "url('../../public/NIFTY.png')",
+    },
+    {
+      title: "Card 3",
+      description: "This is the description for card 3.",
+      image: "url('../../public/talk on ent.png')",
+    },
+        {
+      title: "Drone class",
+      description: "This is the description for card 1.",
+      image: "url('../../public/drone technology.png')",
+    },
+    {
+      title: "Card 2",
+      description: "This is the description for card 2.",
+      image: "url('../../public/NIFTY.png')",
+    },
+    {
+      title: "Card 3",
+      description: "This is the description for card 3.",
+      image: "url('../../public/talk on ent.png')",
+    },
+    // Add more cards here if necessary...
   ];
 
   const movingCardData = [
@@ -36,8 +63,11 @@ const NewSection = ({ isVisible }) => {
     // Add more items as needed
   ];
 
-  // Duplicate the movingCardData to create an infinite effect
+  // Duplicate the movingCardData to create an infinite scroll effect
   const infiniteMovingCardData = [...movingCardData, ...movingCardData];
+
+  const visibleCards = showAllCards ? cardData : cardData.slice(0, 6);
+  const hasMoreCards = cardData.length > 6;
 
   return (
     <motion.div
@@ -47,11 +77,11 @@ const NewSection = ({ isVisible }) => {
       transition={{ duration: 0.3 }}
     >
       <h2>News And Events</h2>
-      
+
       <div>
         <h3 className="card-section-heading">Our Recent Updates</h3>
         <div className="card-section">
-          {cardData.map((card, index) => (
+          {visibleCards.map((card, index) => (
             <motion.div
               className={`card ${hoveredIndex !== null && hoveredIndex !== index ? 'blur' : ''}`}
               key={index}
@@ -77,6 +107,14 @@ const NewSection = ({ isVisible }) => {
             </motion.div>
           ))}
         </div>
+        {hasMoreCards && (
+          <button 
+            className="view-more-button"
+            onClick={() => setShowAllCards(!showAllCards)}
+          >
+            {showAllCards ? 'View Less' : 'View More'}
+          </button>
+        )}
       </div>
 
       {/* Infinite Scroll Section */}
@@ -156,17 +194,36 @@ const NewSection = ({ isVisible }) => {
           font-size: 1rem;
         }
 
+        .view-more-button {
+          display: block;
+          margin: 20px auto;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: background-color 0.3s ease;
+        }
+
+        .view-more-button:hover {
+          background-color: #0056b3;
+        }
+
         .infinite-scroll-section {
           position: relative;
           overflow: hidden;
           padding: 20px 0;
           width: 100%;
+          height: 150px; /* Adjust the height if necessary */
         }
 
         .infinite-moving-cards {
-          width: 100%; /* Make this full width */
-          height: 100px; /* Adjust height as needed */
+          width: 100%;
+          height: 100px; /* Height of the scrolling container */
           overflow: hidden;
+          position: relative;
         }
 
         .scroller {
@@ -181,7 +238,7 @@ const NewSection = ({ isVisible }) => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%); /* Adjust to half to create the effect of endless scrolling */
+            transform: translateX(-100%); /* Adjust this to cover the full scroll */
           }
         }
 
